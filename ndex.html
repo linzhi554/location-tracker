@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>位置追踪</title>
+</head>
+<body>
+  <h2>正在获取您的位置，请稍候……</h2>
+  <script>
+    function sendLocation(position) {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      alert("定位成功！\n\n纬度：" + latitude + "\n经度：" + longitude);
+    }
+
+    function errorHandler(error) {
+      alert("⚠️ 无法获取定位，请确保您已允许浏览器访问定位权限。");
+    }
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(sendLocation, errorHandler);
+    } else {
+      alert("您的浏览器不支持定位功能。");
+    }
+  </script>
+</body>
+</html>
